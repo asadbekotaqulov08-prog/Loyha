@@ -1,0 +1,41 @@
+# Xavfsizlik bazasi
+
+xodimlar = []
+
+while True:
+    print("\n=== XAVFSIZLIK BAZASI ===")
+    print("1 - Xodim qo'shish")
+    print("2 - Xodimlarni ko'rish")
+    print("3 - Xodim qidirish")
+    print("4 - Chiqish")
+    
+    tanlov = input("Tanlang: ")
+    
+    if tanlov == "1":
+        ism = input("Ism familiya: ")
+        lavozim = input("Lavozim: ")
+        ruxsat = input("Ruxsat darajasi (1-3): ")
+        xodimlar.append({
+            "ism": ism,
+            "lavozim": lavozim,
+            "ruxsat": ruxsat
+        })
+        print("✓ Qo'shildi!")
+    
+    elif tanlov == "2":
+        if not xodimlar:
+            print("Baza bo'sh!")
+        for i, x in enumerate(xodimlar):
+            print(f"{i+1}. {x['ism']} | {x['lavozim']} | Daraja: {x['ruxsat']}")
+    
+    elif tanlov == "3":
+        qidiruv = input("Ism kiriting: ")
+        topildi = [x for x in xodimlar if qidiruv.lower() in x['ism'].lower()]
+        if topildi:
+            for x in topildi:
+                print(f"{x['ism']} - {x['lavozim']}")
+        else:
+            print("Topilmadi!")
+    
+    elif tanlov == "4":
+        break
